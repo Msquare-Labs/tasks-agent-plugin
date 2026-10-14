@@ -11,5 +11,16 @@
   "homepage": "https://thetasks.app",
   "repository": "https://github.com/Msquare-Labs/tasks-agent-plugin",
   "license": "MIT",
-  "keywords": ["tasks", "to-do", "kanban", "productivity", "time-tracking"]
+  "keywords": [
+    "tasks",
+    "to-do",
+    "kanban",
+    "productivity",
+    "time-tracking"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://thetasks.app/guides/",
+  "supportUrl": "https://thetasks.app/support/",
+  "privacyPolicyUrl": "https://thetasks.app/legal/privacy/",
+  "termsOfServiceUrl": "https://thetasks.app/legal/terms/"
 }
