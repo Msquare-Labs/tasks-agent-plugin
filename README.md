@@ -1,8 +1,11 @@
-# Tasks
+# Tasks for Claude
 
-Manage your [Tasks](https://thetasks.app) boards from a conversation. Tasks is
-the to-do and kanban app for iPhone, iPad and Mac, and everything Claude does
-through this plugin shows up in the app straight away.
+Manage your [Tasks](https://thetasks.app) boards from a conversation with
+Claude. Tasks is the to-do and kanban app for iPhone, iPad and Mac, and
+everything Claude does through this plugin shows up in the app straight away.
+
+The plugin works in Claude chat, Cowork and Claude Code. It is also packaged
+for ChatGPT and Codex.
 
 ## What you can do
 
@@ -32,6 +35,15 @@ Try asking:
   `tasks-everyday` for personal task management, `tasks-for-coding-agents` for
   tracking work while coding, and `tasks-for-agent-teams` for several agents
   and a person sharing one board.
+
+## Using it with Claude
+
+1. Add the **Tasks** plugin from the plugin directory in Claude.
+2. Open the plugin's **Connectors** tab and connect Tasks. Claude Code connects
+   to it directly when the plugin is enabled.
+3. Sign in with Apple, then tick the projects Claude may use. Claude can always
+   create new projects of its own.
+4. Ask Claude about your tasks. The skills load by themselves when they fit.
 
 ## Data and privacy
 
