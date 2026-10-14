@@ -1,24 +1,59 @@
-# Tasks plugin
+# Tasks
 
-Agent plugin for [Tasks](https://thetasks.app): connects ChatGPT, Codex and
-other Agent Plugins hosts to a Tasks account through the Tasks MCP server, and
-ships the skills that teach an agent to use it well.
+Manage your [Tasks](https://thetasks.app) boards from a conversation. Tasks is
+the to-do and kanban app for iPhone, iPad and Mac, and everything Claude does
+through this plugin shows up in the app straight away.
 
-## Contents
+## What you can do
 
-| Path | What |
-|---|---|
-| `plugin.json` | Package identity, listing metadata and OpenAI review cases (`extensions.com.openai`) |
-| `mcp.json` | The remote MCP server, `https://api.thetasks.app/mcp` (OAuth, discovered from the URL) |
-| `skills/` | The same skills as [tasks-mcp-skills](https://github.com/Msquare-Labs/tasks-mcp-skills); `tasks-everyday` is the onboarding skill |
-| `assets/` | Icon and logo |
+- **Capture** things you mention as tasks in the right project, with the date,
+  priority and tags filled in rather than crammed into the title.
+- **Set up a board** from a sentence about what it is for. Fitness, software,
+  content, study, home and travel projects get columns designed for them.
+- **Find** tasks by free text, or ask structured questions such as what is due
+  this week, what is high priority, or what nobody has picked up.
+- **Complete, reopen, reschedule and update** tasks, including repeating ones.
+- **Comment** on tasks.
+- **Time work** with timers that appear as a Live Activity on your lock screen.
 
-## Building the upload
+Try asking:
 
-```bash
-make zip
-```
+- "What is due this week across my projects?"
+- "Set up a board for training for my first marathon in April."
+- "Remind me to renew the car insurance before the 30th."
 
-Produces `dist/tasks-plugin-<version>.zip` for upload at
-https://platform.openai.com/plugins. Bump `version` in `plugin.json` for every
-resubmission.
+## What is included
+
+- **The Tasks connector** (`.mcp.json`), a remote MCP server at
+  `https://api.thetasks.app/mcp`. When you connect it you sign in to your Tasks
+  account with an emailed code or Sign in with Apple, and a consent screen
+  lists what the connector may read and change. No API key is needed.
+- **Three skills** that teach Claude to use the connector well:
+  `tasks-everyday` for personal task management, `tasks-for-coding-agents` for
+  tracking work while coding, and `tasks-for-agent-teams` for several agents
+  and a person sharing one board.
+
+## Data and privacy
+
+The plugin runs no local code. It only talks to the Tasks server above, which
+is operated by Msquare Labs, and only reads or changes the projects your Tasks
+account can already see. Nothing is sent anywhere else. See the
+[privacy policy](https://thetasks.app/legal/privacy/) and
+[terms](https://thetasks.app/legal/terms/).
+
+## Limitations
+
+You need a Tasks account. Projects and fields cannot be deleted from a
+conversation, only tasks. Inviting collaborators, changing roles and attaching
+files are done in the app.
+
+## Support
+
+[thetasks.app/support](https://thetasks.app/support/) or
+[tasks@msquarelabs.com](mailto:tasks@msquarelabs.com).
+
+## For developers
+
+The same folder is an Agent Plugins package for the ChatGPT plugin directory:
+`plugin.json` and `mcp.json` at the root carry the OpenAI listing and review
+metadata. `make zip` builds the upload into `dist/`.

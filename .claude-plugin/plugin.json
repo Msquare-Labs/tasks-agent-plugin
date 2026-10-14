@@ -1,0 +1,15 @@
+{
+  "name": "tasks",
+  "displayName": "Tasks",
+  "version": "1.0.0",
+  "description": "Plan, capture, find and finish work on your Tasks boards, the to-do and kanban app for iPhone, iPad and Mac. Create tasks with dates and priorities, set up project boards, filter what is due, comment, and run lock-screen timers.",
+  "author": {
+    "name": "Msquare Labs",
+    "email": "tasks@msquarelabs.com",
+    "url": "https://thetasks.app"
+  },
+  "homepage": "https://thetasks.app",
+  "repository": "https://github.com/Msquare-Labs/tasks-agent-plugin",
+  "license": "MIT",
+  "keywords": ["tasks", "to-do", "kanban", "productivity", "time-tracking"]
+}
