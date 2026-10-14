@@ -26,7 +26,7 @@ Try asking:
 
 - **The Tasks connector** (`.mcp.json`), a remote MCP server at
   `https://api.thetasks.app/mcp`. When you connect it you sign in to your Tasks
-  account with an emailed code or Sign in with Apple, and a consent screen
+  account with Sign in with Apple, and a consent screen
   lists what the connector may read and change. No API key is needed.
 - **Three skills** that teach Claude to use the connector well:
   `tasks-everyday` for personal task management, `tasks-for-coding-agents` for
