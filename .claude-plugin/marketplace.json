@@ -1,0 +1,17 @@
+{
+  "name": "msquare-labs",
+  "owner": {
+    "name": "Msquare Labs",
+    "email": "tasks@msquarelabs.com"
+  },
+  "metadata": {
+    "description": "Plugins from Msquare Labs, makers of the Tasks app."
+  },
+  "plugins": [
+    {
+      "name": "tasks-app",
+      "source": "./plugins/tasks-app",
+      "description": "Manage your Tasks boards from Claude: capture tasks, set up boards, find what is due, comment and run lock-screen timers."
+    }
+  ]
+}
