@@ -1,0 +1,102 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tasks",
+  "version": "1.0.0",
+  "description": "Plan, capture, find and finish work on your Tasks boards, the to-do and kanban app for iPhone, iPad and Mac.",
+  "author": {
+    "name": "Msquare Labs",
+    "email": "tasks@msquarelabs.com",
+    "url": "https://thetasks.app"
+  },
+  "homepage": "https://thetasks.app",
+  "repository": "https://github.com/Msquare-Labs/tasks-agent-plugin",
+  "license": "MIT",
+  "keywords": ["tasks", "to-do", "kanban", "productivity", "time tracking"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Tasks",
+        "shortDescription": "Your task boards, from chat",
+        "longDescription": "Tasks connects ChatGPT to your Tasks account, the to-do and kanban app for iPhone, iPad and Mac. Everything you do here shows up in the app straight away.\n\nWhat you can do:\n- Capture things you mention as tasks in the right project, with the date, priority and tags filled in rather than crammed into the title.\n- Set up a new board from a sentence about what it is for. Fitness, software, content, study, home and travel projects get columns designed for them.\n- Find tasks by free text, or ask structured questions such as what is due this week, what is high priority, or what is unassigned.\n- Complete, reopen, reschedule and update tasks, including repeating tasks.\n- Read and write task comments.\n- Start and stop timers, which appear as a Live Activity on your lock screen and record time spent.\n\nWho it is for: anyone who already keeps their work or personal life in Tasks and wants to manage it by talking, as well as teams that share boards.\n\nLimitations: you need a Tasks account, and you sign in with an emailed code or Sign in with Apple. Projects and fields cannot be deleted from chat, only tasks. Inviting collaborators, changing roles and attaching files are not supported. Access is limited to the projects your account can already see, and you can grant read-only access when connecting.",
+        "developerName": "Msquare Labs",
+        "category": "Productivity",
+        "capabilities": [
+          "Create and update tasks",
+          "Set up project boards",
+          "Search and filter tasks",
+          "Comment on tasks",
+          "Start and stop timers"
+        ],
+        "websiteURL": "https://thetasks.app",
+        "supportURL": "https://thetasks.app/support/",
+        "privacyPolicyURL": "https://thetasks.app/legal/privacy/",
+        "termsOfServiceURL": "https://thetasks.app/legal/terms/",
+        "defaultPrompt": [
+          "What is due this week across my projects?",
+          "Set up a board for training for my first marathon in April.",
+          "Remind me to renew the car insurance before the 30th."
+        ],
+        "brandColor": "#0A84FF",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/tasks-everyday/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Create a project board from a stated purpose, getting domain-specific columns.",
+              "prompt": "Set up a board for training for my first marathon in April. I want to track my runs and how they felt.",
+              "tools_triggered": "create_project",
+              "expected_behavior": "A new project named for the marathon is created with fitness columns (for example status, type, tags and date) and ChatGPT summarises the columns it got. The project appears in the Tasks app."
+            },
+            {
+              "description": "Capture a spoken reminder as a task with its date and priority in the proper fields.",
+              "prompt": "Add a task to renew my car insurance before the 30th of this month, high priority.",
+              "tools_triggered": "list_projects, list_fields, create_task",
+              "expected_behavior": "ChatGPT picks (or asks which) project, then creates a task titled about renewing the car insurance with the date field set to the 30th and the priority field set to the high option. The task appears in the app with that date and priority."
+            },
+            {
+              "description": "Answer a structured question about what is due using a filter instead of listing everything.",
+              "prompt": "What is due this week across my projects?",
+              "tools_triggered": "list_projects, list_fields, filter_tasks",
+              "expected_behavior": "ChatGPT returns the pending tasks whose date falls in the current week, grouped or labelled by project, and says so plainly if there are none."
+            },
+            {
+              "description": "Find a task by free text and complete it.",
+              "prompt": "Find my task about renewing the car insurance and mark it done.",
+              "tools_triggered": "search, list_fields, update_task",
+              "expected_behavior": "ChatGPT finds the matching task and moves it to the project's final status option, so it shows as completed in the app. If several tasks match, it asks which one."
+            },
+            {
+              "description": "Start a timer on a task, which shows on the user's lock screen.",
+              "prompt": "Start a timer on my car insurance task.",
+              "tools_triggered": "search, start_timer",
+              "expected_behavior": "A timer starts on the matching task and ChatGPT confirms it is running. list_running_timers then shows it, and stop_timer ends it and records the duration."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Deleting a project is not supported; the assistant should say so instead of attempting it.",
+              "prompt": "Delete my marathon project.",
+              "expected_behavior": "No destructive tool call. ChatGPT explains that projects cannot be deleted from chat and offers alternatives such as deleting its tasks or leaving the project."
+            },
+            {
+              "description": "Requests unrelated to task management should not trigger the connector.",
+              "prompt": "What is the capital of Portugal?",
+              "expected_behavior": "ChatGPT answers directly without calling any Tasks tool."
+            },
+            {
+              "description": "Inviting collaborators is not supported.",
+              "prompt": "Invite alex@example.com to my Home project.",
+              "expected_behavior": "No tool call that changes membership. ChatGPT explains that inviting collaborators has to be done in the Tasks app."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "First release: create and update tasks and projects, search and filter, comments, and lock-screen timers."
+      }
+    }
+  }
+}
