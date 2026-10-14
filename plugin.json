@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "tasks",
+  "name": "tasks-app",
   "version": "1.0.0",
   "description": "Plan, capture, find and finish work on your Tasks boards, the to-do and kanban app for iPhone, iPad and Mac.",
   "author": {
